@@ -2,14 +2,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-var bluebird = require("bluebird");
-var routes = require("./routes/routes");
+const bluebird = require("bluebird");
+const routes = require("./routes/routes");
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
 // Initialize Express
 const app = express();
+
+const PORT = process.env.PORT || 3000;
 
 // Use body parser with our app
 app.use(bodyParser.urlencoded({
@@ -37,7 +39,7 @@ db.once("open", function() {
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-// Listen on Port 3000
-app.listen(3000, function() {
+// Listen on PORT
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });

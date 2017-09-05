@@ -7,8 +7,18 @@ const List = props =>
 
 	      <div>
 			<h2>Check out this awesome list</h2>
-			{console.log(props)}
+			{console.log("Props", props.results)}
+			{ props.results.map(article =>
+				<Card
+					headline={article.headline.main}
+					byline={article.byline.original}
+					uri={article.uri}
+				/>
+			)}
+
 	      </div>
+
+
 
 
 // class List extends Component {

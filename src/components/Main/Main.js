@@ -9,7 +9,7 @@ class Main extends Component {
 
 	state = {
 		results: [],
-		search: "",
+		search: "italy",
 		startYear: 1875,
 		endYear: 2017
 	};
@@ -17,7 +17,7 @@ class Main extends Component {
 	searchArticles = (query, startYear, endYear) => {
 		console.log('Searching articles for ' + query + startYear + endYear);
 		API.search(query, startYear, endYear)
-		  .then(res => this.setState({ results: res.data}))
+		  .then(res => this.setState({ results: res.data.response.docs}))
 		  .catch(err => console.log(err));
 	};
 
@@ -50,7 +50,7 @@ class Main extends Component {
 				/>
 				
 				<List 
-					results={this.state.results.response}
+					results={this.state.results}
 				 />
 				<Save />
 

@@ -8,7 +8,11 @@ let Card = props => {
         <img src=''/>
       </div>
       <div className="content">
-      	 <strong><a href=""></a></strong> 
+      	 <strong>
+         <a href="${props.uri}">{props.headline}</a>
+         <br/>
+         {props.byline}
+         </strong> 
       </div>
   	<div className="btn-save">
   		<button >

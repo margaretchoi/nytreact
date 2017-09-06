@@ -12,6 +12,10 @@ let ArticleSchema = new Schema ({
 		type: String,
 		require: true
 	},
+	favorited: {
+		type: Boolean,
+		default: false
+	},
 	dateCreated: {
 		type: Date,
 		default: Date.now

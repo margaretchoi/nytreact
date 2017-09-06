@@ -6,69 +6,19 @@ import "./List.css";
 const List = props =>
 
 	      <div>
-			<h2>Check out this awesome list</h2>
+			<h5>Showing results for {props.search}</h5>
 			{console.log("Props", props.results)}
 			{ props.results.map(article =>
 				<Card
 					headline={article.headline.main}
 					byline={article.byline.original}
 					uri={article.uri}
+					image={article.multimedia[0]}
+					key={article._id}
+					saveArticle={props.saveArticle}
 				/>
 			)}
 
 	      </div>
-
-
-
-
-// class List extends Component {
-// 	constructor() {
-// 		super();
-// 		this.state = {
-// 		  articles: articles
-// 		};
-
-// 		// Binding the saveArticle method to the App component instance
-// 		this.saveArticle = this.saveArticle.bind(this);
-// 		this.removeArticle = this.removeArticle.bind(this);
-// 	}
-
-
-//   saveArticle(id) {
-//     // Filter this.state.friends for friends with an id not equal to the id being removed
-//     let articles = this.state.articles.filter(article => article.id === id);
-//     // Set this.state.friends equal to the new friends array
-//     this.setState({ articles });
-//   }
-
-
-//    removeArticle(id) {
-//     // Filter this.state.friends for friends with an id not equal to the id being removed
-//     let articles = this.state.articles.filter(article => article.id !== id);
-//     // Set this.state.friends equal to the new friends array
-//     this.setState({ articles });
-//   }
-
-
-// 	render() { 
-// 	    return (
-// 	      <div>
-// 			<h2>Check out this awesome list</h2>
-// 			{this.state.articles.map(article =>
-// 				<Card
-// 					removeArticle={this.removeArticle}
-// 					saveArticle={this.saveArticle}
-// 					id={article.id}
-// 					name={article.name}
-// 					url={article.url}
-// 				/>
-// 			)}
-// 			<div></div>
-// 			<h2>Saved articles!</h2>
-
-// 	      </div>
-// 	    );
-// 	}
-// }
 
 export default List;

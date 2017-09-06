@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Make public a static dir
-app.use(express.static("public"));
+app.use(express.static("build"));
 
 // Database configuration with mongoose
 mongoose.connect("mongodb://localhost/nytreact");
@@ -36,10 +36,10 @@ db.once("open", function() {
 });
 
 // Requiring routes in the routes folder
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+// require("./routes/routes")(app);
+app.use("/", routes);
 
 // Listen on PORT
 app.listen(PORT, function() {
-  console.log("App running on port 3000!");
+  console.log("App running on port " + PORT);
 });

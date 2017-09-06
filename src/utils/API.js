@@ -3,31 +3,30 @@ import axios from "axios";
 const BASEURL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=";
 const APIKEY = "96ffd6bf8b144044b072772eca05b606&q=";
 
-export default {
+const API = {
   // Search for articles and return first 10
   search: function(query, startYear, endYear) {
     return axios.get(BASEURL + APIKEY + query + "&begin_date=" + startYear + "0101&end_date=" + endYear + "1231");
   },
-
-  // Retrieves all quotes from the db
-  getQuotes: function() {
-    return axios.get("/api/quotes");
+  // Retrieves all articles from the db
+  getArticles: function() {
+    return axios.get("/api/articles");
   },
-  // Saves a new quote to the db
-  saveQuote: function(text) {
-    return axios.post("/api/quotes", { text });
+  // Saves a new article to the db
+  saveArticle: function(text) {
+    return axios.post("/api/articles", { text });
   },
-  // Deletes a quote from the db
-  deleteQuote: function(id) {
-    return axios.delete(`/api/quotes/${id}`);
+  // Deletes an article from the db
+  deleteArticle: function(id) {
+    return axios.delete(`/api/articles/${id}`);
   },
-  // Toggles a quote's favorite property in the db
-  favoriteQuote: function(quote) {
-    quote.favorited = !quote.favorited;
-    const { _id, favorited } = quote;
-    return axios.patch(`/api/quotes/${_id}`, { favorited });
+  // Toggles a article's favorite property in the db
+  favoriteArticle: function(article) {
+    article.favorited = !article.favorited;
+    const { _id, favorited } = article;
+    return axios.patch(`/api/articles/${_id}`, { favorited });
   }
-
 
 };
 
+export default API; 

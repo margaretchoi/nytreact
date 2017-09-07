@@ -14,7 +14,8 @@ class Main extends Component {
 			results: [],
 			search: "italy",
 			startYear: 1875,
-			endYear: 2017
+			endYear: 2017,
+			favorites: []
 		};
 
 		this.saveArticle = this.saveArticle.bind(this);
@@ -46,11 +47,6 @@ class Main extends Component {
     	console.log("UPDATED STATE", this.state);
 	};
 
-	handleButtonClick = event => {
-	    const newQuote = this.state.inputValue;
-	    this.setState({ inputValue: "" });
-	}
-
 	// Send to DB
 	// favoriteArticle(article) {
  //    	const newArticle = this.state.inputValue;
@@ -61,32 +57,34 @@ class Main extends Component {
 	// 	API.deleteArticle(id).then(this.getArticles);
 	// }
 
-	getArticles() {
-		API.getArticles().then((res) => {
-		  // const favoriteArticles = res.data.filter(article => article.favorited);
-		  this.setState({ articles: res.data });
-		});
-	}
+	// getArticles() {
+	// 	API.getArticles().then((res) => {
+	// 	  // const favoriteArticles = res.data.filter(article => article.favorited);
+	// 	  this.setState({ articles: res.data });
+	// 	});
+	// }
 
 	// Save article to DB 
 	saveArticle() {
 		const newArticle = this.state.results;
-		API.saveArticle(newArticle).then(this.props.getArticles);
-		console.log('Article saved');
+		API.saveArticle(newArticle).then();
+		alert('Article saved');
 	}
 
 	render() { 
+
 		return (
 
-			<div className="container-fluid">
+			<div>
 				<div className="row">
 					<div className="col-12">
-						<div className="jumbotron">
-						  <h1 className="display-3">NYT React</h1>
+						<div className="bd-header">
+						  <h1 className="display-3 text-center">NYT React</h1>
 						</div>
 					</div>
 				</div>
-				<div className="row">
+			<div className="container-fluid col-10">
+				<div className="row mb-5">
 					<div className="col-12">
 						<Search 
 							handleInputChange={this.handleInputChange}
@@ -95,22 +93,24 @@ class Main extends Component {
 						/>
 					</div>
 				</div>
-				<div className="row">
+				 <div className="row mb-5">
 					<div className="col-12">
 						<List 
 							results={this.state.results}
 							saveArticle={this.saveArticle}
+							search={this.state.search}
+							startYear={this.state.startYear}
+							endYear={this.state.endYear}
 						 />
 					 </div>
 				</div>
-				<div className="row">
+				<div className="row mb-5">
 					<div className="col-12">
 						<Save 
-							getArticles={this.getArticles}
 						/>
 					</div>
 				</div>
-
+				</div>
 			</div>
 
 		) 

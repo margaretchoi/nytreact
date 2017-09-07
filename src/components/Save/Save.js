@@ -14,6 +14,7 @@ class Save extends Component {
     // Binding getArticles to this component since we'll be passing this method to 
     // other components to use
     this.getArticles = this.getArticles.bind(this);
+    this.deleteArticle = this.deleteArticle.bind(this);
   }
   // Getting all quotes once the component has mounted
   componentDidMount() {
@@ -23,19 +24,27 @@ class Save extends Component {
   getArticles() {
     API.getArticles().then((res) => {
       // const favoriteArticles = res.data.filter(article => article.favorited);
-      this.setState({ articles: [res.data] });
+      this.setState({ articles: res.data });
+      console.log('ARTICLE ARRAY', this.state.articles);
+      this.renderArticles();
     });
+  }
+
+  deleteArticle(id) {
+   API.deleteArticle(id).then(this.getArticles);
   }
 
   // A helper method for rendering one panel for each article
   renderArticles() {
-    return this.state.articles.map(articles => {
+    return this.state.articles.map(articles => { 
       <SavedCard
           key={articles._id}
+          deleteArticle={this.deleteArticle}
       />
-    });
+      console.log('RENDERING');
+    } 
+    )
   }
-
   
   render() {
     return (
@@ -45,6 +54,14 @@ class Save extends Component {
           <div className="row">
             {this.renderArticles()}
           </div>
+          <form>
+           <input 
+              onClick={this.getArticles} 
+              className="btn btn-success" 
+              type="submit" 
+              value="Submit" 
+              />
+          </form>
         </div>
       </div>
     );

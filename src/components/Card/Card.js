@@ -4,31 +4,24 @@ import API from "../../utils/API";
 
 const Card = props => {
 
+    const image = props.image;
+
     return (
-    <div className="card">
-      <div className="card-body">
-        <div className="img-container">
-          <img src="${props.image.url}"/>
+
+      <div className="card mb-3">
+        <div className="card-header text-white bg-primary">
+          {props.byline}
         </div>
-        <div className="content">
-        	 <strong>
-           <a href="${props.uri}">{props.headline}</a>
-           <br/>
-           {props.byline}
-           </strong> 
+        <div className="card-body">
+          <img src={image ? 'http://www.nyt.com/' + props.image.url : ''} ></img>
+          <h4 className="card-title"><a href={props.web_url}>{props.headline}</a></h4>
+          <p className="card-text"></p>
         </div>
-    	<div >
-    		<button className="btn-save" onClick={props.saveArticle}>
-    			Save
-    		</button>
+        <div className="card-footer text-muted">
+          <a href="#" className="btn btn-primary" onClick={props.saveArticle}>Favorite</a>
+        </div>
       </div>
-        <div >
-    	 	<span className="btn-delete">
-    	    	𝘅
-    	    </span>
-    	</div>
-      </div>
-    </div>
+
     );
 }
 

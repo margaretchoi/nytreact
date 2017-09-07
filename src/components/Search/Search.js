@@ -7,7 +7,7 @@ const Search = props => {
     <h5>Find Articles</h5>
       <form className="inline-form" id="search-form">
        <div className="form-group">
-          <div className="form-row">
+          <div className="form-row d-flex flex-row">
               <div className="col">
                 <label>
                 Search:
@@ -45,13 +45,15 @@ const Search = props => {
                   />
                 
               </div>
-              <div className="col-1">
+              <div className="col-1 align-self-end">
+                <span className="align-bottom">
                 <input 
                     onClick={props.handleFormSubmit} 
                     className="btn btn-success" 
                     type="submit" 
                     value="Submit" 
                     />
+                  </span>
               </div>
             </div>
         </div>

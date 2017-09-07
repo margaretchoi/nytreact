@@ -14,16 +14,11 @@ const SavedCard = props => {
 	      	 <strong>
 	         <a href=""></a>
 	         <br/>
-	       
+	       		{props.children}
 	         </strong> 
 	      </div>
-	  	<div className="btn-save">
-	  		<button onClick="">
-	  			Save
-	  		</button>
-	    </div>
-	    <div className="">
-	  	 	<span >
+	    <div className="btn-delete">
+	  	 	<span onClick={props.deleteArticle}>
 	  	    	𝘅
 	  	    </span>
 	  	</div>

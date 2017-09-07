@@ -20,13 +20,6 @@ const API = {
   deleteArticle: function(id) {
     return axios.delete(`/api/articles/${id}`);
   },
-  // Toggles a article's favorite property in the db
-  favoriteArticle: function(article) {
-    article.favorited = !article.favorited;
-    const { _id, favorited } = article;
-    return axios.patch(`/api/articles/${_id}`, { favorited });
-  }
-
 };
 
 export default API; 

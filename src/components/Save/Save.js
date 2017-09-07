@@ -43,6 +43,7 @@ class Save extends Component {
               <SavedCard
                 key={articles._id}
                 deleteArticle={this.deleteArticle}
+                favorited={articles.favorited}
               />)
             }
           <form>

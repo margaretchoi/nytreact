@@ -9,8 +9,8 @@ const Card = props => {
     return (
 
       <div className="card mb-3">
-        <div className="card-header text-muted">
-          <a href="#" className="btn btn-primary float-right btn-sm" onClick={props.saveArticle}>Favorite</a>
+        <div className="card-header">
+          <a className="float-right btn-sm" onClick={props.saveArticle}><i className="fa fa-heart-o"></i></a>
         </div>
         <div className="card-body">
           <a href={props.web_url}><img className="rounded float-left mr-3" src={image ? 'http://www.nyt.com/' + props.image.url : ''} ></img></a>

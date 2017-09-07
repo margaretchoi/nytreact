@@ -51,7 +51,7 @@ const Search = props => {
                     onClick={props.handleFormSubmit} 
                     className="btn btn-success" 
                     type="submit" 
-                    value="Submit" 
+                    value="Search" 
                     />
                   </span>
               </div>

@@ -43,26 +43,7 @@ class Main extends Component {
     	this.setState({ 
     		[name]: value
     	});
-
-    	console.log("UPDATED STATE", this.state);
 	};
-
-	// Send to DB
-	// favoriteArticle(article) {
- //    	const newArticle = this.state.inputValue;
- //    	API.favoriteArticle(article).then(this.getArticles);
-	// }
-
-	// deleteArticle(id) {
-	// 	API.deleteArticle(id).then(this.getArticles);
-	// }
-
-	// getArticles() {
-	// 	API.getArticles().then((res) => {
-	// 	  // const favoriteArticles = res.data.filter(article => article.favorited);
-	// 	  this.setState({ articles: res.data });
-	// 	});
-	// }
 
 	// Save article to DB 
 	saveArticle() {

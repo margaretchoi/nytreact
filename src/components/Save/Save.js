@@ -26,7 +26,6 @@ class Save extends Component {
       // const favoriteArticles = res.data.filter(article => article.favorited);
       this.setState({ articles: res.data });
       console.log('ARTICLE ARRAY', this.state.articles);
-      this.renderArticles();
     });
   }
 
@@ -34,26 +33,18 @@ class Save extends Component {
    API.deleteArticle(id).then(this.getArticles);
   }
 
-  // A helper method for rendering one panel for each article
-  renderArticles() {
-    return this.state.articles.map(articles => { 
-      <SavedCard
-          key={articles._id}
-          deleteArticle={this.deleteArticle}
-      />
-      console.log('RENDERING');
-    } 
-    )
-  }
   
   render() {
     return (
       <div>
         <h5>Your Favorite Articles</h5>
         <div className="container">
-          <div className="row">
-            {this.renderArticles()}
-          </div>
+            { this.state.articles.map(articles =>
+              <SavedCard
+                key={articles._id}
+                deleteArticle={this.deleteArticle}
+              />)
+            }
           <form>
            <input 
               onClick={this.getArticles} 

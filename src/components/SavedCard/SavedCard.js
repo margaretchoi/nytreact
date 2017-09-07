@@ -12,9 +12,9 @@ const SavedCard = props => {
 	      </div>
 	      <div className="content">
 	      	 <strong>
-	         <a href=""></a>
+	         <a href="">Card here</a>
 	         <br/>
-	       		{props.children}
+	       		{props.key}
 	         </strong> 
 	      </div>
 	    <div className="btn-delete">

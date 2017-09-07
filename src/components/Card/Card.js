@@ -9,16 +9,15 @@ const Card = props => {
     return (
 
       <div className="card mb-3">
-        <div className="card-header text-white bg-primary">
-          {props.byline}
+        <div className="card-header text-muted">
+          <a href="#" className="btn btn-primary float-right btn-sm" onClick={props.saveArticle}>Favorite</a>
         </div>
         <div className="card-body">
-          <img src={image ? 'http://www.nyt.com/' + props.image.url : ''} ></img>
+          <a href={props.web_url}><img className="rounded float-left mr-3" src={image ? 'http://www.nyt.com/' + props.image.url : ''} ></img></a>
           <h4 className="card-title"><a href={props.web_url}>{props.headline}</a></h4>
+          <p> {props.snippet}</p>
+          <small> {props.byline}</small>
           <p className="card-text"></p>
-        </div>
-        <div className="card-footer text-muted">
-          <a href="#" className="btn btn-primary" onClick={props.saveArticle}>Favorite</a>
         </div>
       </div>
 
